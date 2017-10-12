@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "vue": "^2.4.4",
+    "vue-chartist": "^2.1.1",
     "vue-chartjs": "^2.8.7"
   },
   "devDependencies": {

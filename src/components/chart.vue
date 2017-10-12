@@ -1,48 +1,28 @@
 <template>
-    <div id="tester">
-    </div>
+    <chartist
+        ratio="ct-major-second"
+        type="Line"
+        :data="chartData"
+        :options="chartOptions" >
+    </chartist>
 </template>
 
 <script>
-      import {Line, mixins} from 'vue-chartjs' // We specify what type of chart we want from vue-chartjs and the mixins module
-      const { reactiveProp } = mixins
-      export default Line.extend({ //We are extending the base chart class as mentioned above
-        mixins: [reactiveProp],
+      export default({ 
+        name: 'chart',
         data () {
-          return {
-            options: { //Chart.js options
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: true
-                  },
-                  gridLines: {
-                    display: true
-                  }
-                }],
-                xAxes: [ {
-                  gridLines: {
-                    display: false
-                  }
-                }]
-              },
-              legend: {
-                display: true
-              },
-              responsive: true,
-              maintainAspectRatio: false
+            return {
+                chartData: {
+                    labels: ["A", "B", "C"],
+                    series:[[1, 3, 2], [4, 6, 5]]
+                },
+                chartOptions: {
+                    lineSmooth: false
+                }
             }
-          }
-        },
-        mounted () {
-          // this.chartData is created in the mixin
-          this.renderChart(this.chartData, this.options)
         }
       })
 </script>
 <style lang="scss">
-    #tester {
-        width:600px;
-        height:250px;
-    }
+    
 </style>
